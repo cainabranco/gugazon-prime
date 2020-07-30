@@ -1,10 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Home from './pages/Home/home';
+import { BrowserRouter, Switch, Route} from 'react-router-dom'
+import CadastroVideo from "./pages/cadastro/Video";
+import CadastroCategoria from "./pages/cadastro/Categoria";
+
+// TO DO: Criar página erro 404
+const Pagina404 = () => (<div>Página 404</div>)
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <BrowserRouter>
+        <Switch>
+            <Route path="/" component={Home} exact/>
+            <Route path="/cadastro/video" component={CadastroVideo}/>
+            <Route path="/cadastro/categoria" component={CadastroCategoria}/>
+            <Route component={Pagina404}/>
+        </Switch>
+    </BrowserRouter>,
+    document.getElementById('root')
 );
